@@ -20,7 +20,7 @@ export async function createRezept(title: string) {
 }
 
 
-export const playlistQueryOptions = queryOptions({
+export const rezeptQueryOptions = queryOptions({
     queryKey: ['rezepte'],
     queryFn: () => fetchRezepte(),
 });

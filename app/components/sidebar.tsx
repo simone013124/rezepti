@@ -1,5 +1,5 @@
 import { Home, LayoutGrid, ListMusic } from 'lucide-react';
-import { PlaylistNav } from './playlist-nav';
+//import { PlaylistNav } from './playlist-nav';
 import { Link } from '@remix-run/react';
 
 export function Sidebar() {
@@ -29,7 +29,7 @@ export function Sidebar() {
       <section>
         <h2 className="mb-2">Playlists</h2>
 
-        <PlaylistNav></PlaylistNav>
+
       </section>
     </div>
   );
