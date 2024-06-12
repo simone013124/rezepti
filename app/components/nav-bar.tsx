@@ -15,9 +15,7 @@ export function NavBar() {
         <Link to="/merkliste" className="px-3 py-1 font-medium hover:bg-accent rounded-sm">
           Merkliste
         </Link>
-        <Link to="/app.rezepte._index" className="px-3 py-1 font-medium hover:bg-accent rounded-sm">
-          Rezepte
-        </Link>
+
       </nav>
     </header>
   );
