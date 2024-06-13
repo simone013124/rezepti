@@ -2,8 +2,8 @@ import { queryOptions } from '@tanstack/react-query';
 import { Rezept } from '~/models/rezept';
 
 
-export async function fetchRezepte() {
-    const response = await fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert');
+export async function fetchVegan() {
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=Vegan');
     const rezepte: Rezept[] = await response.json();
 
     return rezepte;
@@ -11,7 +11,7 @@ export async function fetchRezepte() {
 
 
 export async function createRezept(title: string) {
-    const response = await fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert', {
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=Vegan', {
         method: 'POST',
         body: JSON.stringify({ title: title }),
     });
@@ -25,6 +25,6 @@ export async function createRezept(title: string) {
 
 export const rezeptQueryOptions = queryOptions({
     queryKey: ['rezepte'],
-    queryFn: () => fetchRezepte(),
+    queryFn: () => fetchVegan(),
 });
 

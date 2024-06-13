@@ -1,4 +1,4 @@
-import { rezeptQueryOptions } from '~/api/rezepte-api';
+import { rezeptQueryOptions } from '~/api/vegan-api';
 import { useQuery } from '@tanstack/react-query';
 import LoadingSpinner from '~/components/loading-spinner';
 

@@ -48,7 +48,7 @@ export function Sidebar() {
                             Desserts
                         </Link>
 
-                        <Link to="/app/desserts" className="sidebar_link">
+                        <Link to="/app/vegan" className="sidebar_link">
                             <Salad/>
                             Vegan
                         </Link>

@@ -1,12 +1,16 @@
+// Desserts.tsx
+
+import React from 'react';
 import { LoaderFunctionArgs } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
-import {fetchDesserts} from '../api/dessert-api';
+import { fetchDesserts } from '../api/dessert-api';
+import RecipeCard from '~/components/recipeCard';
 
 export async function loader({ request }: LoaderFunctionArgs) {
-  const rezepte = await fetchDesserts();
+  const response = await fetchDesserts();
 
   return {
-    rezepte: rezepte,
+    rezepte: response.meals, // Assuming response structure has a 'meals' array
   };
 }
 
@@ -14,7 +18,16 @@ export default function Desserts() {
   const data = useLoaderData<typeof loader>();
   const rezepte = data.rezepte;
 
+  // Check if rezepte is not an array or if it's empty
+  if (!Array.isArray(rezepte) || rezepte.length === 0) {
+    return <div>No desserts found.</div>; // or appropriate error handling
+  }
+
   return (
-      <pre>{JSON.stringify(rezepte, null, 2)}</pre>
+      <div className="recipe-cards-container">
+        {rezepte.map((recipe) => (
+            <RecipeCard key={recipe.idMeal} recipe={recipe} />
+        ))}
+      </div>
   );
 }
