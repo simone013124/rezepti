@@ -2,7 +2,7 @@ import { queryOptions } from '@tanstack/react-query';
 import { Rezept } from '~/models/rezept';
 
 
-export async function fetchRezepte() {
+export async function fetchDesserts() {
     const response = await fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert');
     const rezepte: Rezept[] = await response.json();
 
@@ -21,10 +21,8 @@ export async function createRezept(title: string) {
 }
 
 
-
-
 export const rezeptQueryOptions = queryOptions({
     queryKey: ['rezepte'],
-    queryFn: () => fetchRezepte(),
+    queryFn: () => fetchDesserts(),
 });
 

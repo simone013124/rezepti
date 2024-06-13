@@ -1,16 +1,16 @@
 import { LoaderFunctionArgs } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
-import { fetchRezepte } from '../api/rezepte-api';
+import {fetchDesserts} from '../api/dessert-api';
 
 export async function loader({ request }: LoaderFunctionArgs) {
-  const rezepte = await fetchRezepte();
+  const rezepte = await fetchDesserts();
 
   return {
     rezepte: rezepte,
   };
 }
 
-export default function Library() {
+export default function Desserts() {
   const data = useLoaderData<typeof loader>();
   const rezepte = data.rezepte;
 
