@@ -1,37 +1,36 @@
 import { LoaderFunctionArgs } from '@remix-run/node';
-import { getPlaylistById } from '~/storage.server/playlist-storage';
+import { getPlaylistById } from '~/storage.server/rezept-storage';
 import { useLoaderData } from '@remix-run/react';
-
-
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const playlistId = params['id'];
 
   if (!playlistId) {
-    throw Error('404');
+    throw new Response('Not Found', { status: 404 });
   }
 
   const playlist = await getPlaylistById(playlistId);
-  const tracks = await fetchTracks();
 
-  const filteredTracks = playlist?.tracks.map((trackId) => tracks.find((track) => track.id === trackId));
+  if (!playlist) {
+    throw new Response('Not Found', { status: 404 });
+  }
 
-  return { playlist: playlist, playlistTracks: filteredTracks };
+  // Beispielcode für das Abrufen und Filtern von Tracks
+  // const tracks = await fetchTracks();
+  // const filteredTracks = playlist?.tracks.map((trackId) => tracks.find((track) => track.id === trackId));
+
+  return { playlist };
 }
 
 export default function PlaylistDetail() {
   const data = useLoaderData<typeof loader>();
   const playlist = data.playlist;
-  const tracks = data.playlistTracks;
-
-  if (!playlist) {
-    return <h1>Oops, we could not find your playlist</h1>;
-  }
+  // const tracks = data.playlistTracks;
 
   return (
-    <>
-      <h1 className="mb-8">{playlist.title}</h1>
-      {tracks?.length ? <TrackCardList tracks={tracks}></TrackCardList> : null}
-    </>
+      <>
+        <h1 className="mb-8">{playlist.title}</h1>
+        {/* Tracks anzeigen */}
+      </>
   );
 }

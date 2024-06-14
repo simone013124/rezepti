@@ -1,6 +1,6 @@
 // AppHome.tsx
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import RecipeCard from '~/components/recipeCard';
 
 import { fetchRandom } from "~/api/random-api";

@@ -1,7 +1,6 @@
 import {Home, LayoutGrid, Apple, CakeSlice, ChefHat, Drumstick, Soup, Beef, Salad, Fish} from 'lucide-react';
-//import { PlaylistNav } from './playlist-nav';
 import {Link} from '@remix-run/react';
-import {ChefHat} from "lucide-react";
+import {PlaylistNav} from "~/components/rezept-nav";
 
 
 export function Sidebar() {
@@ -53,13 +52,19 @@ export function Sidebar() {
                             Vegan
                         </Link>
                     </div>
+                    <Link to="/app/new" className="sidebar_link">
+                        <Salad/>
+                        Neu
+                    </Link>
+
 
                 </div>
             </section>
 
             <section>
+                <h2 className="mb-2">Playlists</h2>
 
-
+                <PlaylistNav></PlaylistNav>
             </section>
         </div>
     );

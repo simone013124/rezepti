@@ -38,6 +38,8 @@ export function createFeatureStorage<T extends { id: string }>(key: string) {
     return updatedEntries;
   }
 
+
+
   return {
     getAll,
     getById,
@@ -45,4 +47,22 @@ export function createFeatureStorage<T extends { id: string }>(key: string) {
     delete: deleteItem,
     update: updateItem,
   };
+
+
 }
+
+// Beispiel für die Funktion loadPlaylistsFromLocalStorage im storageUtils.ts
+export const loadPlaylistsFromLocalStorage = (): any[] => {
+  const playlistsJson = localStorage.getItem('playlists');
+  if (playlistsJson) {
+    return JSON.parse(playlistsJson);
+  }
+  return [];
+};
+
+// Beispiel für die Funktion createPlaylist im storageUtils.ts
+export const createPlaylist = (playlist: any) => {
+  const playlists = loadPlaylistsFromLocalStorage();
+  playlists.push(playlist);
+  localStorage.setItem('playlists', JSON.stringify(playlists));
+};
