@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export const store = configureStore({
   reducer: {
+
     // TODO add your slices here
   },
 });

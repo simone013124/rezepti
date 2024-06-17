@@ -1,32 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { fetchById } from '~/api/byId-api';
 
-const RecipeDetail: React.FC = () => {
+import { useLoaderData } from '@remix-run/react';
 
-    const params = useParams();
-    console.log(params); // Überprüfen Sie die Konsolenausgabe, um sicherzustellen, dass `id` enthalten ist
-    const { id } = params as { id: string };
+import { LoaderFunctionArgs } from '@remix-run/node';
+import { fetchById } from '~/api/byId-api'; 
 
-    console.log(id);
+export async function loader({ params }: LoaderFunctionArgs) {
+    const id = params['id'];
 
-    const [recipe, setRecipe] = useState<any>(null); // Hier können Sie den Typ von `recipe` anpassen
+    if (!id) {
+        throw new Error('404');
+    }
 
-    useEffect(() => {
-        const loadRecipe = async () => {
-            try {
-                if (id) {
-                    const recipeDetails = await fetchById(id);
+    const recipe = await fetchById(id);
 
-                    setRecipe(recipeDetails);
-                }
-            } catch (error) {
-                console.error('Failed to fetch recipe details', error);
-            }
-        };
+    if (!recipe) {
+        throw new Error('Recipe not found');
+    }
 
-        loadRecipe();
-    }, [id]);
+    return { recipe };
+}
+
+
+
+export default function RecipeDetail() {
+    const { recipe } = useLoaderData<{ recipe: never }>();
 
     if (!recipe) {
         return <div>Loading...</div>;
@@ -39,6 +36,4 @@ const RecipeDetail: React.FC = () => {
             {/* Weitere Details hinzufügen */}
         </div>
     );
-};
-
-export default RecipeDetail;
+}

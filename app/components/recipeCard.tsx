@@ -33,6 +33,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
             </div>
             <div className="card_body">
                 <h2 className="card_title">{recipe.strMeal}</h2>
+                <p>{recipe.idMeal}</p>
                 <p className="card_description">{recipe.strInstructions}</p>
                 <ul className="card_ingredients">
                     <li>{recipe.strIngredient1} - {recipe.strMeasure1}</li>
@@ -47,9 +48,16 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
                     Source: <a href={recipe.strSource} target="_blank" rel="noopener noreferrer">{recipe.strSource}</a>
                 </p>
 
+                <Link to="/app" className="sidebar_link">
+
+                    XY
+                </Link>
+
+
                 <Link to={`/app/recipe/${recipe.idMeal}`}>
                     <button>More</button>
                 </Link>
+
 
             </div>
         </div>

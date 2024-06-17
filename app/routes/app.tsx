@@ -2,6 +2,8 @@ import { Sidebar } from '~/components/sidebar';
 import { Outlet, json } from '@remix-run/react';
 import { ActionFunctionArgs, LoaderFunctionArgs } from '@remix-run/node';
 import { prefCookies } from '~/lib/cookies.server';
+import {Route} from "lucide-react";
+
 
 
 export async function loader({ request }: LoaderFunctionArgs) {
