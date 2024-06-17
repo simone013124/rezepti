@@ -1,5 +1,6 @@
 
 import React from 'react';
+import {Link} from "@remix-run/react";
 
 type Recipe = {
     idMeal: string;
@@ -45,6 +46,11 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
                 <p className="card_source">
                     Source: <a href={recipe.strSource} target="_blank" rel="noopener noreferrer">{recipe.strSource}</a>
                 </p>
+
+                <Link to={`/app/recipe/${recipe.idMeal}`}>
+                    <button>More</button>
+                </Link>
+
             </div>
         </div>
     );
