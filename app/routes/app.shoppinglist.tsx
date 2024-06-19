@@ -27,7 +27,7 @@ const ShoppingList: React.FC = () => {
             selectedRecipeIds.map(id =>
                 deleteIngredientsFromLocalStorage(id).then(() => {
                     // Nach dem Löschen aktualisiere den State der Rezepte und Checkboxen
-                    setRecipes(prevRecipes => prevRecipes.filter(recipe => recipe.id.toString() !== id));
+                    setIngredients(prevRecipes => prevRecipes.filter(recipe => recipe.id.toString() !== id));
                     setCheckedItems(prevCheckedItems => {
                         const updatedCheckedItems = { ...prevCheckedItems };
                         delete updatedCheckedItems[id];
