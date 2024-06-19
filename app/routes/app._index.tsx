@@ -1,4 +1,3 @@
-// AppHome.tsx
 
 import { useEffect, useState } from 'react';
 import RecipeCard from '~/components/recipeCard';
@@ -27,10 +26,10 @@ export default function AppHome() {
         <>
             <h1>ReJoSiCa</h1>
             <p className="text-muted-foreground text-sm mt-2">Savor the flavor with our delightful recipe app! Explore a treasure trove of culinary creations right at your fingertips.</p>
-            <p className="text-muted-foreground text-sm mt-2">Whether you're craving something sweet or savory, our sidebar links make it easy to browse by categories. Let's embark on a journey of taste together!</p>
+            <p className="text-muted-foreground text-sm">Whether you're craving something sweet or savory, our sidebar links make it easy to browse by categories. Let's embark on a journey of taste together!</p>
 
 
-            <h2>Your random recipe</h2>
+            <h2 className="my-8">Your random recipe</h2>
             <>
 
                 {random && <RecipeCard recipe={random} />}

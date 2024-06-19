@@ -2,11 +2,12 @@ import { ClientActionFunctionArgs, redirect, useNavigate } from '@remix-run/reac
 import { useState } from 'react';
 
 // Funktion zum Speichern der Playlist im Local Storage
-const savePlaylistToLocalStorage = (playlist: any) => {
-  let playlists = JSON.parse(localStorage.getItem('playlists') || '[]');
+const saveIngredientToLocalStorage = (playlist: any) => {
+  const playlists = JSON.parse(localStorage.getItem('ingredients') || '[]');
   playlists.push(playlist);
-  localStorage.setItem('playlists', JSON.stringify(playlists));
+  localStorage.setItem('ingredients', JSON.stringify(playlists));
 };
+
 
 export async function clientAction({ request }: ClientActionFunctionArgs) {
   const formData = await request.formData();
@@ -18,18 +19,15 @@ export async function clientAction({ request }: ClientActionFunctionArgs) {
 
   const newPlaylist = {
     title: title,
-    createdAt: new Date().toISOString(),
-    tracks: [],
-    imageUrl: `https://picsum.photos/240?random=${Math.random()}`,
-    id: `playlist-${Date.now()}`
+    id: `ingredient-${Date.now()}`
   };
 
-  savePlaylistToLocalStorage(newPlaylist);
+  saveIngredientToLocalStorage(newPlaylist);
 
-  return redirect('/app');
+  return redirect('/app/shoppinglist');
 }
 
-export default function CreatePlaylistPage() {
+export default function createIngredientItem() {
   const navigate = useNavigate();
 
   const [title, setTitle] = useState('');
@@ -43,16 +41,14 @@ export default function CreatePlaylistPage() {
 
     const newPlaylist = {
       title: title,
-      createdAt: new Date().toISOString(),
-      tracks: [],
-      imageUrl: `https://picsum.photos/240?random=${Math.random()}`,
-      id: `playlist-${Date.now()}`
+      id: `ingredient-${Date.now()}`
     };
 
-    savePlaylistToLocalStorage(newPlaylist);
+    saveIngredientToLocalStorage(newPlaylist);
 
-    navigate('/app/');
+    navigate('/app/shoppinglist');
   };
+
 
   return (
       <div className="max-w-md">

@@ -1,5 +1,5 @@
 import { LoaderFunctionArgs } from '@remix-run/node';
-import { getPlaylistById } from '~/storage.server/rezept-storage';
+import { getPlaylistById } from '~/storage.server/ingredient-storage';
 import { useLoaderData } from '@remix-run/react';
 
 export async function loader({ params }: LoaderFunctionArgs) {

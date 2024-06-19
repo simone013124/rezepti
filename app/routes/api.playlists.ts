@@ -1,5 +1,5 @@
 import { ActionFunctionArgs, json } from '@remix-run/node';
-import { createPlaylist, getAllPlaylists } from '~/storage.server/rezept-storage';
+import { createPlaylist, getAllPlaylists } from '~/storage.server/ingredient-storage';
 
 export async function loader() {
   const playlists = await getAllPlaylists();

@@ -1,53 +1,33 @@
-
 import React from 'react';
-import {Link} from "@remix-run/react";
-import {  Heart } from 'lucide-react';
-
-
-
-type Recipe = {
-    idMeal: string;
-    strMeal: string;
-    strMealThumb: string;
-    strInstructions: string;
-    strIngredient1: string;
-    strMeasure1: string;
-    strIngredient2: string;
-    strMeasure2: string;
-    strIngredient3: string;
-    strMeasure3: string;
-    strYoutube: string;
-    strSource: string;
-};
+import { Link } from '@remix-run/react';
+import { Heart } from 'lucide-react';
+import { useAppDispatch, useAppSelector } from '~/store.client/store';
+import { toggleFavoriteAction } from '~/store.client/favorite-reducer';
+import { Recipe } from '~/models/recipe';
 
 type RecipeCardProps = {
     recipe: Recipe;
 };
 
-const isPlaying = true;
-
-type PlayButtonProps = { isPlaying: boolean; onClick?: () => void };
-function PlayButton({ isPlaying = false, onClick }: PlayButtonProps) {
+type HeartButtonProps = { isHearted: boolean; onClick?: () => void };
+function HeartButton({ isHearted = false, onClick }: HeartButtonProps) {
     return (
         <button type="button" className="icon-button" onClick={onClick}>
-            {isPlaying ? <Heart strokeWidth={1.5} /> :  <Heart strokeWidth={1.5} fill="white" />}
+            {isHearted ? <Heart strokeWidth={1.5} fill="red" /> : <Heart strokeWidth={1.5} />}
         </button>
     );
 }
 
-
-
-const onPlayButtonClicked = () => {
-    if (isPlaying) {
-        console.log("play");
-    } else {
-        console.log("play not");
-
-    }
-};
-
-
 const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
+    const dispatch = useAppDispatch();
+    const isFavorite = useAppSelector((state) =>
+        state.recipes.recipes.find((r) => r.id === recipe.id)?.isFavorite ?? false
+    );
+
+    const heartedClicked = () => {
+        dispatch(toggleFavoriteAction(recipe.id));
+    };
+
     return (
         <div className="card">
             <div className="card_cover">
@@ -65,7 +45,6 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
                     <li>{recipe.strIngredient1} - {recipe.strMeasure1}</li>
                     <li>{recipe.strIngredient2} - {recipe.strMeasure2}</li>
                     <li>{recipe.strIngredient3} - {recipe.strMeasure3}</li>
-                    {/* Weitere Zutaten nach Bedarf hinzufügen */}
                 </ul>
                 <a href={recipe.strYoutube} target="_blank" rel="noopener noreferrer">
                     Watch on YouTube
@@ -74,14 +53,11 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
                     Source: <a href={recipe.strSource} target="_blank" rel="noopener noreferrer">{recipe.strSource}</a>
                 </p>
 
-
-                <PlayButton isPlaying={isPlaying} onClick={onPlayButtonClicked}></PlayButton>
+                <HeartButton isHearted={isFavorite} onClick={heartedClicked} />
 
                 <Link to={`/app/recipe/${recipe.idMeal}`}>
                     <button>More</button>
                 </Link>
-
-
             </div>
         </div>
     );

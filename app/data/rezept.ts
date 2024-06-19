@@ -1,4 +1,3 @@
-import { rezepte } from './rezept';
 
 export const rezepte = [
     {

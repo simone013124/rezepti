@@ -1,5 +1,5 @@
 import { queryOptions } from '@tanstack/react-query';
-import { Rezept } from '~/models/rezept';
+import { Rezept } from '~/models/recipe';
 
 
 export async function fetchRandom() {

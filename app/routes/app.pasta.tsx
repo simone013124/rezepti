@@ -1,20 +1,18 @@
-
-
 import { LoaderFunctionArgs } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
-import { fetchDesserts } from '../api/dessert-api';
+import { fetchPastas } from '../api/pasta-api';
 import RecipeCard from '~/components/recipeCard';
 import React from "react";
 
 export async function loader({ request }: LoaderFunctionArgs) {
-  const response = await fetchDesserts();
+  const response = await fetchPastas();
 
   return {
-    rezepte: response.meals, // Assuming response structure has a 'meals' array
+    rezepte: response.meals,
   };
 }
 
-export default function Desserts() {
+export default function Pasta() {
   const data = useLoaderData<typeof loader>();
   const rezepte = data.rezepte;
 
@@ -25,7 +23,7 @@ export default function Desserts() {
 
   return (
       <div>
-        <h1 className="mb-2">Desserts</h1>
+        <h1 className="mb-2">Pasta</h1>
         <p className="mb-8">lksjfewpegj</p>
         <div className="recipe-cards-container">
           {rezepte.map((recipe) => (

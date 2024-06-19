@@ -1,32 +1,30 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
-type TrackState = 'idle' | 'stopped' | 'paused' | 'playing';
-type PlayerState = {
-  trackId: string | null;
-  trackState: TrackState
+
+export const toggleFavoriteAction = createAction<string>('recipes/toggleFavorite');
+
+type Recipe = {
+    id: string;
+    title: string;
+    isFavorite: boolean;
 };
 
-export const pauseAction = createAction('player/pause');
-export const playAction = createAction<{ trackId: string | null }>('player/play');
-export const stopAction = createAction('player/stop');
+const initialState: { recipes: Recipe[] } = {
+    recipes: [
+        { id: '1', title: 'Recipe 1', isFavorite: false },
+        { id: '2', title: 'Recipe 2', isFavorite: true },
+        // Weitere Rezepte nach Bedarf hinzufügen
+    ],
+};
 
-const initialState = {
-  trackId: null,
-  trackState: 'idle'
-} satisfies PlayerState as PlayerState;
+const favoriteReducer = createReducer(initialState, (builder) => {
+    builder.addCase(toggleFavoriteAction, (state, action) => {
+        const recipeId = action.payload;
+        const recipeToUpdate = state.recipes.find((recipe) => recipe.id === recipeId);
 
-const playerReducer = createReducer(initialState, (builder) => {
-  builder.addCase(pauseAction, (state) => {
-    state.trackState = 'paused';
-  });
-  builder.addCase(playAction, (state, action) => {
-    if (action.payload.trackId) {
-        state.trackId = action.payload.trackId;
-    }
-    state.trackState = 'playing'
-  });
-  builder.addCase(stopAction, (state) => {
-    state.trackState = 'stopped';
-  });
+        if (recipeToUpdate) {
+            recipeToUpdate.isFavorite = !recipeToUpdate.isFavorite;
+        }
+    });
 });
 
-export default playerReducer;
+export default favoriteReducer;
