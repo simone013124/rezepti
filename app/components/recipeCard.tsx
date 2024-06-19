@@ -1,6 +1,9 @@
 
 import React from 'react';
 import {Link} from "@remix-run/react";
+import {  Heart } from 'lucide-react';
+
+
 
 type Recipe = {
     idMeal: string;
@@ -20,6 +23,29 @@ type Recipe = {
 type RecipeCardProps = {
     recipe: Recipe;
 };
+
+const isPlaying = true;
+
+type PlayButtonProps = { isPlaying: boolean; onClick?: () => void };
+function PlayButton({ isPlaying = false, onClick }: PlayButtonProps) {
+    return (
+        <button type="button" className="icon-button" onClick={onClick}>
+            {isPlaying ? <Heart strokeWidth={1.5} /> :  <Heart strokeWidth={1.5} fill="white" />}
+        </button>
+    );
+}
+
+
+
+const onPlayButtonClicked = () => {
+    if (isPlaying) {
+        console.log("play");
+    } else {
+        console.log("play not");
+
+    }
+};
+
 
 const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
     return (
@@ -48,11 +74,8 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
                     Source: <a href={recipe.strSource} target="_blank" rel="noopener noreferrer">{recipe.strSource}</a>
                 </p>
 
-                <Link to="/app" className="sidebar_link">
 
-                    XY
-                </Link>
-
+                <PlayButton isPlaying={isPlaying} onClick={onPlayButtonClicked}></PlayButton>
 
                 <Link to={`/app/recipe/${recipe.idMeal}`}>
                     <button>More</button>

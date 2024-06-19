@@ -1,8 +1,8 @@
 // Beispiel für die Funktion loadPlaylistsFromLocalStorage im storageUtils.ts
-export const loadPlaylistsFromLocalStorage = (): any[] => {
-    const playlistsJson = localStorage.getItem('playlists');
-    if (playlistsJson) {
-        return JSON.parse(playlistsJson);
+export const loadRecipesFromLocalStorage = (): any[] => {
+    const recipesJson = localStorage.getItem('playlists');
+    if (recipesJson) {
+        return JSON.parse(recipesJson);
     }
     return [];
 };

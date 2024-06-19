@@ -56,15 +56,15 @@ export default function CreatePlaylistPage() {
 
   return (
       <div className="max-w-md">
-        <h1 className="mb-6">Create a new playlist</h1>
+        <h1 className="mb-6">Add ingredient to shopping list</h1>
 
         <form onSubmit={onSubmitHandler} className="flex gap-4 flex-col" method="post">
           <label className="flex gap-3 items-baseline">
-            <div className="w-40">Playlist title:</div>
+            <div className="w-40">Ingredient:</div>
 
             <div className="flex-auto">
               <input
-                  aria-label="Playlist"
+                  aria-label="Ingredient"
                   name="title"
                   type="text"
                   required

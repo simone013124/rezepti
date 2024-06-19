@@ -10,6 +10,7 @@ export async function fetchRandom() {
 }
 
 
+
 export async function createRezept(title: string) {
     const response = await fetch('https://www.themealdb.com/api/json/v1/1/random.php', {
         method: 'POST',

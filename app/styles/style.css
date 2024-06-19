@@ -5,7 +5,7 @@
 @import 'tailwindcss/components';
 @import './card.css';
 @import './card-list.css';
-@import './icon-button.css';
+@import 'shoppinglist.css';
 @import './sidebar.css';
 @import './tabs.css';
 @import './app-layout.css';
