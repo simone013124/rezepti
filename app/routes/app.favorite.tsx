@@ -11,15 +11,22 @@ const FavoriteRecipes: React.FC = () => {
         setFavoriteRecipes(favorites);
     }, []);
 
+
     return (
         <div>
-            <h1>Favorite Recipes</h1>
+            <h1 className="mb-3">Favorite Recipes</h1>
+            <p className="mb-12">lsifjiowe</p>
             <div className="favorite-recipes">
-
-                {favoriteRecipes.map((recipe) => (
-                    <RecipeCard key={recipe.idMeal} recipe={recipe} />
-                ))}
-
+                {favoriteRecipes.length === 0 ? (
+                    <p>No favorite recipes found.</p>
+                ) : (
+                    favoriteRecipes.map((recipe) => (
+                        <div key={recipe.idMeal}>
+                            <h2>{recipe.idMeal}</h2>
+                            <p>{recipe.strMeal}</p>
+                        </div>
+                    ))
+                )}
             </div>
         </div>
     );

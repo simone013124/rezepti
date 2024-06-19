@@ -19,12 +19,14 @@ const initialState: Recipe[] = loadFavoritesFromLocalStorage();
 const favoriteReducer = createReducer(initialState, (builder) => {
     builder.addCase(toggleFavoriteAction, (state, action) => {
         const recipeId = action.payload;
-        const recipeToUpdate = state.find((recipe) => recipe.id === recipeId);
+        const recipeToUpdate = state.find((recipe) => recipe.idMeal === recipeId);
 
         if (recipeToUpdate) {
+            // Toggle isFavorite
             recipeToUpdate.isFavorite = !recipeToUpdate.isFavorite;
         } else {
-            state.push({ id: recipeId, isFavorite: true } as Recipe); // Nur für neue Favoriten
+            // Füge ein neues Rezept mit isFavorite=true hinzu
+            state.push({ idMeal: recipeId, isFavorite: true } as Recipe);
         }
 
         // Favoritenliste im Local Storage aktualisieren (nur im Browser)

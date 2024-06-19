@@ -1,8 +1,8 @@
 
 import { useLoaderData } from '@remix-run/react';
-
 import { LoaderFunctionArgs } from '@remix-run/node';
-import { fetchById } from '~/api/byId-api'; 
+import { fetchById } from '~/api/byId-api';
+import  RecipeDetail from '~/components/recipeDetail';
 
 export async function loader({ params }: LoaderFunctionArgs) {
     const id = params['id'];
@@ -22,7 +22,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
 
 
 
-export default function RecipeDetail() {
+export default function RecipeDetailContainer() {
     const { recipe } = useLoaderData<{ recipe: never }>();
 
     if (!recipe) {
@@ -30,10 +30,8 @@ export default function RecipeDetail() {
     }
 
     return (
-        <div className="recipe-detail">
-            <h2>{recipe.strMeal}</h2>
-            <p>{recipe.strInstructions}</p>
-            {/* Weitere Details hinzufügen */}
+        <div className="recipe-detail-container">
+            <RecipeDetail recipe={recipe} />
         </div>
     );
 }

@@ -1,4 +1,5 @@
-
+import { Recipe } from '~/models/recipe';
+import { loadFavoritesFromLocalStorage, saveFavoritesToLocalStorage } from '~/storage.server/localStorageUtils';
 
 export const loadIngredientsFromLocalStorage = (): any[] => {
     const ingredientsJson = localStorage.getItem('ingredients');
@@ -29,10 +30,11 @@ export const saveFavoritesToLocalStorage = (favorites: any[]): void => {
     localStorage.setItem('favoriteRecipes', JSON.stringify(favorites));
 };
 
+
 // Funktion zum Hinzufügen oder Entfernen eines Rezepts aus den Favoriten
-export const toggleFavoriteInLocalStorage = (recipe: any): void => {
+export const toggleFavoriteInLocalStorage = (recipe: Recipe): void => {
     const favorites = loadFavoritesFromLocalStorage();
-    const index = favorites.findIndex((fav: any) => fav.id === recipe.id);
+    const index = favorites.findIndex((fav: Recipe) => fav.idMeal === recipe.idMeal);
 
     if (index !== -1) {
         // Rezept bereits in Favoriten, entfernen
