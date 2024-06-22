@@ -1,10 +1,14 @@
 .card {
   max-width: 15rem;
   width: 100%;
+  //border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding-bottom: 0.5rem;
+  background-color: white;
+  margin: 1rem;
 }
 .card_cover {
   overflow: hidden;
-  border-radius: 0.375rem;
 }
 .card_cover-img {
   height: auto;
@@ -19,7 +23,18 @@
   line-height: 1rem;
   display: flex;
   gap: 0.75rem;
+  flex-direction: column;
+  margin: 1rem;
 }
+
+
+.buttons_card{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: end;
+}
+
 .card_title {
   margin-bottom: 0.25rem;
 }
@@ -36,4 +51,43 @@
   opacity: 0;
   transition: all 120ms ease-out;
 
+}
+
+.more_Button{
+  background-color: white;
+
+  color: black;
+  border-radius: 0px;
+
+}
+
+
+.more_Button:hover{
+  background-color: black;
+  color: white;
+}
+
+.app-layout_content {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.5); /* Hintergrundfarbe mit Transparenz */
+  overflow: hidden; /* Um sicherzustellen, dass das Pseudo-Element nicht überläuft */
+}
+
+.app-layout_content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("picture/background.jpeg"); /* Pfad zu deinem Bild */
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.1; /* Transparenz des Hintergrundbildes */
+  z-index: -1; /* Sicherstellen, dass es hinter dem Inhalt bleibt */
+}
+
+.recipe-cards-container {
+  display: flex;
+  flex-wrap: wrap;
 }

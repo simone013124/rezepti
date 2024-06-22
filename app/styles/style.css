@@ -9,6 +9,7 @@
 @import './sidebar.css';
 @import './tabs.css';
 @import './app-layout.css';
+@import 'recipe-detail.css';
 
 @import 'tailwindcss/utilities';
 
