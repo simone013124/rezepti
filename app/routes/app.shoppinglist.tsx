@@ -64,7 +64,7 @@ const ShoppingList: React.FC = () => {
                 ))}
             </div>
 
-            <button onClick={handleClearStorage}>Delete checked ingredients</button>
+            <button className="btns" onClick={handleClearStorage}>Delete checked ingredients</button>
         </div>
     );
 };

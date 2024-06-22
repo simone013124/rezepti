@@ -1,0 +1,43 @@
+.recipe-h2{
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.recipe-image{
+    width: 30rem;
+    padding-bottom: 1rem;
+}
+
+.recipe-detail-container{
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+}
+
+.picture_information{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.recipe-meta{
+    padding-right: 1rem;
+}
+
+.white-button {
+    background-color: white;
+    color: #333; /* Dunkle Textfarbe */
+    border: 1px solid black; /* Heller Rand */
+    padding: 5px 10px;
+    margin-top: 3rem;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.white-button:hover {
+    background-color: black; /* Leichtes Grau beim Hover */
+    color: white;
+}

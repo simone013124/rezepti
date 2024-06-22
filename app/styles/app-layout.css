@@ -11,6 +11,13 @@
     padding: 3.5rem;
   }
   @media (min-width: 1280px) {
-    padding: 8rem;
+    padding: 6rem;
   }
+}
+
+.main-side{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

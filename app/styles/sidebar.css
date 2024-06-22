@@ -6,6 +6,7 @@
   gap: 2.5rem;
   border-right-width: 1px;
   width: 20rem;
+  background-color: rgba(246,246,246,0.8);
 }
 
 .sidebar_link {
@@ -22,7 +23,7 @@
 
   &:hover {
     color: hsl(var(--accent-foreground));
-    background: hsl(var(--accent));
+    background: white;
   }
 
   & > svg {

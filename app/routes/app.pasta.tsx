@@ -22,10 +22,10 @@ export default function Pasta() {
   }
 
   return (
-      <div>
-        <h1 className="mb-2">Pasta</h1>
-        <p className="mb-8">lksjfewpegj</p>
-        <div className="recipe-cards-container">
+      <div className="recipe-list">
+          <h1 className="mb-4 text-center">Pasta Recipes</h1>
+          <p className="mb-8 text-center">Tantalize your taste buds with a variety of mouthwatering pasta recipes that are sure to please pasta lovers everywhere. From classic Italian spaghetti and creamy carbonara to inventive pasta salads and spicy arrabbiata, these recipes highlight the versatility of pasta. Whether you prefer comforting baked pasta dishes or quick and easy weeknight dinners, these pasta recipes will satisfy your pasta cravings with every bite.</p>
+          <div className="recipe-cards-container">
           {rezepte.map((recipe) => (
               <RecipeCard key={recipe.idMeal} recipe={recipe} />
           ))}

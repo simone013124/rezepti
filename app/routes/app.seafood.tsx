@@ -22,10 +22,11 @@ export default function SeaFood() {
   }
 
   return (
-      <div>
-        <h1 className="mb-2">Seafood</h1>
-        <p className="mb-8">lksjfewpegj</p>
-        <div className="recipe-cards-container">
+      <div className="recipe-list">
+          <h1 className="mb-4 text-center">Seafood Recipes</h1>
+          <p className="mb-8 text-center">Dive into a world of fresh and delectable seafood recipes that capture the essence of the ocean. From succulent grilled shrimp and classic seafood paella to elegant lobster bisque and spicy seafood tacos, these recipes celebrate the flavors of the sea. Whether you're hosting a seafood feast or craving a light and refreshing dish, these seafood recipes will transport your taste buds to coastal paradise.</p>
+
+          <div className="recipe-cards-container">
           {rezepte.map((recipe) => (
               <RecipeCard key={recipe.idMeal} recipe={recipe} />
           ))}

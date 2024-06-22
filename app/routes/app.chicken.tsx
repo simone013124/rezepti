@@ -22,10 +22,11 @@ export default function Chicken() {
   }
 
   return (
-      <div>
-        <h1 className="mb-2">Recipes with Chicken</h1>
-        <p className="mb-8">lksjfewpegj</p>
-        <div className="recipe-cards-container">
+      <div className="recipe-list">
+          <h1 className="mb-4 text-center">Chicken Recipes</h1>
+          <p className="mb-8 text-center">Explore a collection of flavorful and versatile chicken recipes that will delight your taste buds. From comforting chicken soups and creamy pastas to zesty grilled chicken and exotic chicken curry dishes, there's something for everyone to enjoy. Whether you're looking for quick weeknight dinners or impressive meals for guests, these chicken recipes are sure to become family favorites.</p>
+
+          <div className="recipe-cards-container">
           {rezepte.map((recipe) => (
               <RecipeCard key={recipe.idMeal} recipe={recipe} />
           ))}

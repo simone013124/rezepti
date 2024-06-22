@@ -70,7 +70,7 @@ export default function createIngredientItem() {
             </div>
           </label>
 
-          <button className="ml-auto" type="submit">
+          <button className="ml-auto btns" type="submit">
             Submit
           </button>
         </form>

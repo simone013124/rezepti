@@ -22,10 +22,11 @@ export default function Vegan() {
   }
 
   return (
-      <div>
-        <h1 className="mb-2">Vegan recipes</h1>
-        <p className="mb-8">lksjfewpegj</p>
-        <div className="recipe-cards-container">
+      <div className="recipe-list">
+          <h1 className="mb-4 text-center">Vegan Recipes</h1>
+          <p className="mb-8 mx-4 text-center">Discover a diverse selection of plant-based vegan recipes that are both nutritious and delicious. From vibrant salads and hearty vegan burgers to comforting soups and innovative vegan desserts, these recipes showcase the versatility of vegan ingredients. Whether you're following a vegan lifestyle or looking to incorporate more plant-based meals into your diet, these vegan recipes offer something for everyone to enjoy.</p>
+
+          <div className="recipe-cards-container">
           {rezepte.map((recipe) => (
               <RecipeCard key={recipe.idMeal} recipe={recipe} />
           ))}

@@ -10,24 +10,32 @@ const RecipeDetail: React.FC<RecipeDetailProps> = ({ recipe }) => {
     return (
         <div className="recipe-detail">
             <div className="recipe-header">
-                <h2>{recipe.strMeal}</h2>
-                <img src={recipe.strMealThumb} alt={recipe.strMeal} className="recipe-image" />
+                <h2 className="recipe-h2">{recipe.strMeal}</h2>
+
             </div>
+            <div className="picture_information">
+
+            <hr className="my-4 border-gray-300" />
             <div className="recipe-meta">
-                <p><strong>Category:</strong> {recipe.strCategory}</p>
-                <p><strong>Area:</strong> {recipe.strArea}</p>
-                <p><strong>Ingredients:</strong></p>
+                <p className="category"><strong>Category:</strong> {recipe.strCategory}</p>
+                <hr className="my-4 border-gray-300" />
+                <p className="recipeArea"><strong>Area:</strong> {recipe.strArea}</p>
+                <hr className="my-4 border-gray-300" />
+                <p className="Ingredients"><strong>Ingredients:</strong></p>
                 <ul>
                     {renderIngredients(recipe)}
                 </ul>
             </div>
+                <img src={recipe.strMealThumb} alt={recipe.strMeal} className="recipe-image" />
+            </div>
             <div className="recipe-instructions">
-                <h3>Instructions:</h3>
+                <h2>Instructions:</h2>
                 <p>{recipe.strInstructions}</p>
             </div>
+            <hr className="my-4 border-gray-300" />
             {recipe.strYoutube && (
                 <div className="recipe-video">
-                    <h3>Video Instructions:</h3>
+                    <h2>Video Instructions:</h2>
                     <iframe
                         width="560"
                         height="315"
@@ -38,7 +46,7 @@ const RecipeDetail: React.FC<RecipeDetailProps> = ({ recipe }) => {
                     ></iframe>
                 </div>
             )}
-            <Link to="/app" >
+            <Link to="/app" className="white-button">
                 Back
             </Link>
         </div>
