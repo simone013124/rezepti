@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { loadIngredientsFromLocalStorage, deleteIngredientsFromLocalStorage } from '~/storage.server/localStorageUtils';
+import { loadIngredientsFromLocalStorage, deleteIngredientsFromLocalStorage } from '~/storage.server/ingredient-storage';
 
 const ShoppingList: React.FC = () => {
     const [recipes, setIngredients] = useState<any[]>([]);
@@ -20,6 +20,7 @@ const ShoppingList: React.FC = () => {
 
     const handleClearStorage = () => {
         // Liste der IDs der ausgewählten Rezepte zum Löschen
+        // @ts-ignore
         const selectedRecipeIds = Object.keys(checkedItems).filter(id => checkedItems[id]);
 
         // Lösche jedes ausgewählte Rezept aus dem localStorage und aktualisiere den State
@@ -30,6 +31,7 @@ const ShoppingList: React.FC = () => {
                     setIngredients(prevRecipes => prevRecipes.filter(recipe => recipe.id.toString() !== id));
                     setCheckedItems(prevCheckedItems => {
                         const updatedCheckedItems = { ...prevCheckedItems };
+                        // @ts-ignore
                         delete updatedCheckedItems[id];
                         return updatedCheckedItems;
                     });

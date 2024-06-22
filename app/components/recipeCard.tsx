@@ -34,7 +34,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
     );
 
     const onToggleFavoriteClicked = () => {
-        dispatch(toggleFavoriteAction(recipe.idMeal));
+        dispatch(toggleFavoriteAction({ idMeal: recipe.idMeal, strMealThumb: recipe.strMealThumb, strMeal: recipe.strMeal }));
     };
 
     return (

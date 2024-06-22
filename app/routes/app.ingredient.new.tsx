@@ -1,12 +1,7 @@
 import { ClientActionFunctionArgs, redirect, useNavigate } from '@remix-run/react';
 import { useState } from 'react';
+import { saveIngredientToLocalStorage } from '~/storage.server/ingredient-storage';
 
-// Funktion zum Speichern der Playlist im Local Storage
-const saveIngredientToLocalStorage = (playlist: any) => {
-  const playlists = JSON.parse(localStorage.getItem('ingredients') || '[]');
-  playlists.push(playlist);
-  localStorage.setItem('ingredients', JSON.stringify(playlists));
-};
 
 
 export async function clientAction({ request }: ClientActionFunctionArgs) {
@@ -17,12 +12,12 @@ export async function clientAction({ request }: ClientActionFunctionArgs) {
     throw new Error('missing title');
   }
 
-  const newPlaylist = {
+  const newIngredient = {
     title: title,
     id: `ingredient-${Date.now()}`
   };
 
-  saveIngredientToLocalStorage(newPlaylist);
+  saveIngredientToLocalStorage(newIngredient);
 
   return redirect('/app/shoppinglist');
 }
