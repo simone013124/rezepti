@@ -7,7 +7,8 @@ import React from "react";
 export async function loader({ request }: LoaderFunctionArgs) {
   const response = await fetchChickens();
 
-  return {
+  // @ts-ignore
+    return {
     rezepte: response.meals,
   };
 }
@@ -18,13 +19,13 @@ export default function Chicken() {
 
   // Check if rezepte is not an array or if it's empty
   if (!Array.isArray(rezepte) || rezepte.length === 0) {
-    return <div>No desserts found.</div>; // or appropriate error handling
+    return <div>No recipes found.</div>; // or appropriate error handling
   }
 
   return (
       <div>
         <h1 className="mb-2">Recipes with Chicken</h1>
-        <p className="mb-8">lksjfewpegj</p>
+        <p className="mb-8">Chicken recipes offer a versatile and delicious range of meals, from savory grilled chicken breasts to comforting chicken stews. Whether you prefer spicy, sweet, or savory flavors, there's a chicken recipe to satisfy every palate.</p>
         <div className="recipe-cards-container">
           {rezepte.map((recipe) => (
               <RecipeCard key={recipe.idMeal} recipe={recipe} />

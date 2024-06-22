@@ -18,13 +18,13 @@ export default function Vegan() {
 
 
   if (!Array.isArray(rezepte) || rezepte.length === 0) {
-    return <div>No desserts found.</div>;
+    return <div>No recipes found.</div>;
   }
 
   return (
       <div>
         <h1 className="mb-2">Vegan recipes</h1>
-        <p className="mb-8">lksjfewpegj</p>
+        <p className="mb-8">Vegan recipes showcase the vibrant flavors of plant-based ingredients, offering delicious dishes like hearty lentil stew and creamy avocado pasta. Enjoy a variety of meals that are both nutritious and satisfying without any animal products.</p>
         <div className="recipe-cards-container">
           {rezepte.map((recipe) => (
               <RecipeCard key={recipe.idMeal} recipe={recipe} />

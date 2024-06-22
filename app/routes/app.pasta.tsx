@@ -18,13 +18,13 @@ export default function Pasta() {
 
   // Check if rezepte is not an array or if it's empty
   if (!Array.isArray(rezepte) || rezepte.length === 0) {
-    return <div>No desserts found.</div>; // or appropriate error handling
+    return <div>No recipes found.</div>; // or appropriate error handling
   }
 
   return (
       <div>
         <h1 className="mb-2">Pasta</h1>
-        <p className="mb-8">lksjfewpegj</p>
+        <p className="mb-8">Pasta recipes offer a diverse range of flavors and styles, from classic spaghetti carbonara to creamy fettuccine Alfredo. Whether baked, boiled, or sautéed, pasta dishes are a comforting and versatile favorite.</p>
         <div className="recipe-cards-container">
           {rezepte.map((recipe) => (
               <RecipeCard key={recipe.idMeal} recipe={recipe} />

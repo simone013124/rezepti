@@ -15,6 +15,7 @@ const FavoriteRecipes: React.FC = () => {
     return (
         <div>
             <h1 className="mb-3">Favorite Recipes</h1>
+            <p>Here you can find all your recipes you added to favorites. Simply unlike them to remove them from the list.</p>
             <div className="favorite-recipes">
                 {favoriteRecipes.length === 0 ? (
                     <p>No favorite recipes found.</p>
