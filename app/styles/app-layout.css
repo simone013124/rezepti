@@ -15,6 +15,27 @@
   }
 }
 
+.app-layout_content, .aboutMain {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.5); /* Hintergrundfarbe mit Transparenz */
+  overflow: hidden; /* Um sicherzustellen, dass das Pseudo-Element nicht überläuft */
+}
+
+.app-layout_content::before, .aboutMain::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("picture/background.jpeg");
+  background-size: cover;
+  background-repeat: repeat;
+  opacity: 0.1; /* Transparenz des Hintergrundbildes */
+  z-index: -1; /* Sicherstellen, dass es hinter dem Inhalt bleibt */
+}
+
+
 .main-side{
   display: flex;
   flex-direction: column;
