@@ -51,18 +51,3 @@ export function createFeatureStorage<T extends { id: string }>(key: string) {
 
 }
 
-// Beispiel für die Funktion loadPlaylistsFromLocalStorage im storageUtils.ts
-export const loadPlaylistsFromLocalStorage = (): any[] => {
-  const playlistsJson = localStorage.getItem('playlists');
-  if (playlistsJson) {
-    return JSON.parse(playlistsJson);
-  }
-  return [];
-};
-
-// Beispiel für die Funktion createPlaylist im storageUtils.ts
-export const createPlaylist = (playlist: any) => {
-  const playlists = loadPlaylistsFromLocalStorage();
-  playlists.push(playlist);
-  localStorage.setItem('playlists', JSON.stringify(playlists));
-};

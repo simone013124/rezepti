@@ -1,34 +1,21 @@
-import { createFeatureStorage } from './storage-utils';
 
-/* Type of the entities that should be stored */
-export type IngredientType = {
-  id: string;
-  title: string;
+export const loadIngredientsFromLocalStorage = (): any[] => {
+  const ingredientsJson = localStorage.getItem('ingredients');
+  if (ingredientsJson) {
+    return JSON.parse(ingredientsJson);
+  }
+  return [];
+}
 
+export const deleteIngredientsFromLocalStorage = async (id: string) => {
+  let ingredients = loadIngredientsFromLocalStorage();
+  ingredients = ingredients.filter((ingredients) => ingredients.id.toString() !== id); // Filtern der Rezepte
+  localStorage.setItem('ingredients', JSON.stringify(ingredients)); // Speichern der aktualisierten Rezepte im localStorage
 };
 
-/* Create the storage with a unique name */
-const ingredientStorage = createFeatureStorage<IngredientType>('ingredients');
 
-/* Expose the functions you need in your application */
-export const getAllIngredients = () => {
-  return ingredientStorage.getAll();
-};
-
-export const getIngredientBy = (id: string) => {
-  return ingredientStorage.getById(id);
-};
-
-export const createIngredient = (title: string) => {
-  const date = new Date().toISOString();
-  const newIngredient = { id: Date.now().toString(), title: title, createdAt: date };
-  return ingredientStorage.create(newIngredient);
-};
-
-export const updateIngredient = async (id: string, title: string) => {
-  return ingredientStorage.update({ id: id, title: title});
-};
-
-export const deleteIngredient = async (id: string) => {
-  return ingredientStorage.delete(id);
+export const saveIngredientToLocalStorage = (ingredient: any) => {
+  const ingredients = JSON.parse(localStorage.getItem('ingredients') || '[]');
+  ingredients.push(ingredient);
+  localStorage.setItem('ingredients', JSON.stringify(ingredients));
 };

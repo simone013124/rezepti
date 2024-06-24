@@ -1,15 +1,20 @@
-import { Recipe } from '~/models/recipe';
+import {Recipe} from "~/models/recipe";
 
-// Funktion zum Speichern der Favoritenliste im Local Storage
-const saveFavoriteRecipes = (favorites: Recipe[]) => {
-    localStorage.setItem('favoriteRecipes', JSON.stringify(favorites));
+export const loadFavoritesFromLocalStorage = (): Recipe[] => {
+    if (typeof window !== 'undefined') {
+        const favoriteJson = localStorage.getItem('favorites');
+        if (favoriteJson) {
+            return JSON.parse(favoriteJson);
+        }
+    }
+    return [];
+}
+
+export const deleteFavoritesFromLocalStorage = async (id: string) => {
+    if (typeof window !== 'undefined') {
+        let favorites = loadFavoritesFromLocalStorage();
+        favorites = favorites.filter((recipe) => recipe.idMeal.toString() !== id); // Filtern der Rezepte
+        localStorage.setItem('favorites', JSON.stringify(favorites)); // Speichern der aktualisierten Rezepte im localStorage
+    }
 };
 
-// Funktion zum Laden der Favoritenliste aus dem Local Storage
-const loadFavoriteRecipes = (): Recipe[] => {
-    const favoritesJSON = localStorage.getItem('favoriteRecipes');
-    return favoritesJSON ? JSON.parse(favoritesJSON) : [];
-};
-
-// Exportiere diese Funktion, um die Favoriten im Local Storage zu verwalten
-export { saveFavoriteRecipes, loadFavoriteRecipes };
